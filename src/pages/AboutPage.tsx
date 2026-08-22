@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { motion } from "motion/react";
 import SectionHeading from "../components/SectionHeading";
-import { CAFE_IMAGES, CAFE_CONFIG } from "../data/cafeData";
+import { CAFE_IMAGES, CAFE_CONFIG, FALLBACK_IMAGE } from "../data/cafeData";
 import { Coffee, GraduationCap, Compass, Users } from "lucide-react";
 import Button from "../components/Button";
 
@@ -54,9 +54,15 @@ export default function AboutPage() {
         {/* Big Banner Graphic */}
         <div className="aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden shadow-lux mb-16 border border-border-light">
           <img
-            src={CAFE_IMAGES.aboutAlt}
+            src={CAFE_IMAGES.aboutAlt || FALLBACK_IMAGE}
             alt="Warm atmosphere inside Express Cafe Imadol"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (target.src !== FALLBACK_IMAGE) {
+                target.src = FALLBACK_IMAGE;
+              }
+            }}
             className="w-full h-full object-cover"
           />
         </div>

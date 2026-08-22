@@ -14,13 +14,15 @@ export const CAFE_CONFIG = {
   whatsappUrl: "https://wa.me/9779841296759?text=Hello%20Express%20Cafe%2C%20I%20would%20like%20to%20enquire%20about%20your%20Barista%20Training%20or%20Menu.",
 };
 
+export const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80";
+
 // High-quality Unsplash image assets directly related to coffee/baristas
 export const CAFE_IMAGES = {
-  hero: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1200&auto=format&fit=crop", // Espresso table
-  about: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1200&auto=format&fit=crop", // Espresso shot closeup
-  aboutAlt: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop", // Elegant Cafe Interior
-  trainingHero: "https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?q=80&w=1200&auto=format&fit=crop", // Steaming Milk on Espresso Machine
-  ctaBackground: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=1200&auto=format&fit=crop", // Soft, warm steam coffee cup
+  hero: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80", // Espresso table
+  about: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80", // Espresso shot closeup
+  aboutAlt: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80", // Elegant Cafe Interior
+  trainingHero: "https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?auto=format&fit=crop&w=1200&q=80", // Steaming Milk on Espresso Machine
+  ctaBackground: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80", // Soft, warm steam coffee cup
 };
 
 export interface MenuItem {
@@ -214,7 +216,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     description: "Learn the absolute essentials of coffee brewing: dialing in your grind, measuring exact dose, extraction variables, and espresso sensory analysis.",
     duration: "Level 1",
     skillsLearned: ["Grinder Settings & Calibration", "Tamping Techniques", "Extraction Time Optimization", "Brewing Ratio Science"],
-    image: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=500&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "tm-2",
@@ -222,7 +224,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     description: "Master the art of creating glossy, sweet microfoam and pouring breathtaking, symmetrical latte art including hearts, rosettas, and tulips.",
     duration: "Level 2",
     skillsLearned: ["Microfoam Aeration Control", "Temperature Balancing", "Pouring Heights & Speed Flow", "Basic to Complex Pour Designs"],
-    image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=500&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "tm-3",
@@ -230,7 +232,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     description: "Gain confidence operating commercial 2-group espresso machines, understanding pressure profiles, and daily backflushing/hygiene standards.",
     duration: "Level 3",
     skillsLearned: ["Commercial Steam Wand Operations", "Water Filtration & Pressures", "Daily Machine Backflushing", "Group Head Gasket Maintenance"],
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=500&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "tm-4",
@@ -238,7 +240,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     description: "Synthesize everything into high-velocity real-world barista work: managing multiple tickets, serving drinks under time limits, and working behind a live bar.",
     duration: "Advanced",
     skillsLearned: ["Multi-Order Ticket Sequencing", "Bar Cleanliness & Organization", "Customer Hospitality Etiquette", "High-Volume Speed Workflows"],
-    image: "https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?q=80&w=500&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?auto=format&fit=crop&w=800&q=80"
   }
 ];
 

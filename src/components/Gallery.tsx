@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { GALLERY_ITEMS, GalleryItem } from "../data/cafeData";
+import { GALLERY_ITEMS, GalleryItem, FALLBACK_IMAGE } from "../data/cafeData";
 import { X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
 
 interface GalleryProps {
@@ -106,10 +106,16 @@ export default function Gallery({ limit, initialFilter = "all" }: GalleryProps) 
                 className="relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group shadow-lux hover:shadow-lux-hover bg-background-soft border border-border-light"
               >
                 <img
-                  src={item.src}
+                  src={item.src || FALLBACK_IMAGE}
                   alt={item.alt}
                   referrerPolicy="no-referrer"
                   loading="lazy"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== FALLBACK_IMAGE) {
+                      target.src = FALLBACK_IMAGE;
+                    }
+                  }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Overlay on hover */}
@@ -180,9 +186,15 @@ export default function Gallery({ limit, initialFilter = "all" }: GalleryProps) 
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                src={itemsToDisplay[lightboxIndex].src}
+                src={itemsToDisplay[lightboxIndex].src || FALLBACK_IMAGE}
                 alt={itemsToDisplay[lightboxIndex].alt}
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (target.src !== FALLBACK_IMAGE) {
+                    target.src = FALLBACK_IMAGE;
+                  }
+                }}
                 className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl border border-white/10"
               />
 

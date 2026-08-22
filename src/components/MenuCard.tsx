@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { MenuItem } from "../data/cafeData";
+import { MenuItem, FALLBACK_IMAGE } from "../data/cafeData";
 import { Award } from "lucide-react";
 
 interface MenuCardProps {
@@ -20,10 +20,16 @@ export default function MenuCard({ item }: MenuCardProps) {
       {/* Image container */}
       <div className="relative aspect-video overflow-hidden bg-background-soft">
         <img
-          src={item.image}
+          src={item.image || FALLBACK_IMAGE}
           alt={item.name}
           referrerPolicy="no-referrer"
           loading="lazy"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (target.src !== FALLBACK_IMAGE) {
+              target.src = FALLBACK_IMAGE;
+            }
+          }}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         {item.isPopular && (

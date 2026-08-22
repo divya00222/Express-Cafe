@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { TrainingModule } from "../data/cafeData";
+import { TrainingModule, FALLBACK_IMAGE } from "../data/cafeData";
 import { CheckCircle, Clock } from "lucide-react";
 
 interface ServiceCardProps {
@@ -20,11 +20,17 @@ export default function ServiceCard({ module, onEnquire }: ServiceCardProps) {
       {/* Image header with Level badge */}
       <div className="relative aspect-video overflow-hidden bg-teal-dark">
         <img
-          src={module.image}
+          src={module.image || FALLBACK_IMAGE}
           alt={module.title}
           referrerPolicy="no-referrer"
           loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (target.src !== FALLBACK_IMAGE) {
+              target.src = FALLBACK_IMAGE;
+            }
+          }}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-4 right-4 bg-primary text-white text-[11px] font-bold uppercase tracking-widest px-3 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
           <Clock className="w-3.5 h-3.5" />

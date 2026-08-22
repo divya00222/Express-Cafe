@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import Button from "./Button";
-import { CAFE_IMAGES } from "../data/cafeData";
+import { CAFE_IMAGES, FALLBACK_IMAGE } from "../data/cafeData";
 import { Award, ChevronRight, Coffee } from "lucide-react";
 
 export default function Hero() {
@@ -84,9 +84,15 @@ export default function Hero() {
             {/* Large rounded image container */}
             <div className="relative aspect-square md:aspect-4/3 lg:aspect-square bg-teal-dark rounded-3xl overflow-hidden border border-white/10 shadow-lux">
               <img
-                src={CAFE_IMAGES.hero}
+                src={CAFE_IMAGES.hero || FALLBACK_IMAGE}
                 alt="Express Cafe coffee extraction barista work"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.currentTarget;
+                  if (target.src !== FALLBACK_IMAGE) {
+                    target.src = FALLBACK_IMAGE;
+                  }
+                }}
                 className="w-full h-full object-cover select-none pointer-events-none"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-teal-deep/30 to-transparent" />

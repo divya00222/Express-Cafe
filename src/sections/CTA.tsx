@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import Button from "../components/Button";
-import { CAFE_CONFIG, CAFE_IMAGES } from "../data/cafeData";
+import { CAFE_CONFIG, CAFE_IMAGES, FALLBACK_IMAGE } from "../data/cafeData";
 import { Coffee, Map } from "lucide-react";
 
 export default function CTA() {
@@ -9,10 +9,16 @@ export default function CTA() {
       {/* Background cover image with heavy overlay for maximum readability contrast */}
       <div className="absolute inset-0 z-0">
         <img
-          src={CAFE_IMAGES.ctaBackground}
+          src={CAFE_IMAGES.ctaBackground || FALLBACK_IMAGE}
           alt="Warm steaming coffee beans backdrop"
           referrerPolicy="no-referrer"
           loading="lazy"
+          onError={(e) => {
+            const target = e.currentTarget;
+            if (target.src !== FALLBACK_IMAGE) {
+              target.src = FALLBACK_IMAGE;
+            }
+          }}
           className="w-full h-full object-cover opacity-15"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-teal-deep via-teal-deep/95 to-teal-deep" />

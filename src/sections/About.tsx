@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { CAFE_IMAGES } from "../data/cafeData";
+import { CAFE_IMAGES, FALLBACK_IMAGE } from "../data/cafeData";
 import SectionHeading from "../components/SectionHeading";
 import Button from "../components/Button";
 import { Award, ShieldCheck, Heart } from "lucide-react";
@@ -43,9 +43,15 @@ export default function About() {
                 className="relative z-10 aspect-3/4 md:aspect-4/3 lg:aspect-3/4 rounded-3xl overflow-hidden shadow-lux border border-border-light"
               >
                 <img
-                   src={CAFE_IMAGES.about}
+                   src={CAFE_IMAGES.about || FALLBACK_IMAGE}
                    alt="Espresso shot pulling from high grade espresso machine"
                    referrerPolicy="no-referrer"
+                   onError={(e) => {
+                     const target = e.currentTarget;
+                     if (target.src !== FALLBACK_IMAGE) {
+                       target.src = FALLBACK_IMAGE;
+                     }
+                   }}
                    className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -59,9 +65,15 @@ export default function About() {
                 className="absolute -bottom-8 -right-8 w-2/3 aspect-square rounded-2xl overflow-hidden shadow-2xl border-4 border-white hidden sm:block z-20"
               >
                 <img
-                  src={CAFE_IMAGES.aboutAlt}
+                  src={CAFE_IMAGES.aboutAlt || FALLBACK_IMAGE}
                   alt="Cozy interior cafe setting at Express Cafe Imadol"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== FALLBACK_IMAGE) {
+                      target.src = FALLBACK_IMAGE;
+                    }
+                  }}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
