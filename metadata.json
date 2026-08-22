@@ -1,0 +1,6 @@
+{
+  "name": "Express Cafe",
+  "description": "Express Cafe in Imadol, Lalitpur offers premium coffee, a welcoming cafe experience, and professional barista training.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
